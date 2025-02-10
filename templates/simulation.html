@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulation Output</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <style>
+    /* Additional custom styles for output cards */
+    .log-card {
+      transition: transform 0.3s ease;
+    }
+    .log-card:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-primary text-white py-3">
+    <div class="container d-flex align-items-center">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="System Logo" width="80" class="me-3" />
+      <h1 class="h4 mb-0">Simulation Output</h1>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="row g-4">
+      {% for message in logs %}
+      <div class="col-md-6">
+        <div class="card log-card shadow-sm">
+          <div class="card-body">
+            <p class="card-text">{{ message }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="mt-4">
+      <a href="/simulate" class="btn btn-secondary">Announce More Tasks</a>
+      <a href="/" class="btn btn-link">Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="bg-light text-center py-3">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Disaster Management Inc. MAP Fusion</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
